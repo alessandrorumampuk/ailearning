@@ -254,7 +254,7 @@ const Chatbot = () => {
         setMessages([{
           id: Date.now(),
           role: 'assistant',
-          content: `Hello! I'm your AI assistant.`,
+          content: `Hello! I am your AI assistant.`,
           timestamp: new Date().toISOString()
         }]);
       } else {
