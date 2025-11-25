@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ChatbotComponent from '../components/chatbot';
+import '../styles/global.css';
+
+// Set page title and description for SEO
+const title = 'Chat with AI';
+const description = 'Interact with our AI assistant powered by Ollama';
+---
+
+<Layout>
+  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <ChatbotComponent client:load />
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  :global(html) {
+    @apply h-full;
+  }
+  :global(body) {
+    @apply h-full bg-gray-50 dark:bg-gray-900;
+  }
+  :global(#astro-island-root) {
+    @apply h-full;
+  }
+</style>

@@ -1,0 +1,23 @@
+services:
+  viera-app:
+    image: alessandrorumampuk/viera:latest_viera
+    container_name: viera-app
+    restart: unless-stopped
+    ports:
+      - "54671:54671"
+    # Load environment variables from .env file
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - PUBLIC_GOOGLE_API_KEY=${PUBLIC_GOOGLE_API_KEY}
+    volumes:
+      - ./.env:/app/.env:ro 
+    # Override command to use npm start directly (no entrypoint script needed)
+    command: ["npm", "run", "dev"]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:54671"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
