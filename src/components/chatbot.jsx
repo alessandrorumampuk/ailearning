@@ -299,7 +299,7 @@ Please start Ollama: \`ollama serve\``,
           let responseContent = '';
 
           if (showPipeline) {
-            responseContent = `**3-Stage Pipeline Execution** 🔄\n\n`;
+            responseContent = `**AI Response**\n\n`;
             
             pipelineResult.stages.forEach(stage => {
               const statusEmoji = stage.status === 'complete' ? '✅' : stage.status === 'error' ? '❌' : '⏳';
@@ -395,13 +395,10 @@ Please start Ollama: \`ollama serve\``,
       {/* Header */}
       <div className="flex items-center justify-between p-4 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">🔢</span>
-          </div>
           <div>
-            <h2 className="text-lg font-bold text-gray-900">PAL Math Pipeline</h2>
+            <h2 className="text-lg font-bold text-gray-900">AI Assistant</h2>
             <p className="text-xs text-gray-500">
-              {ollamaAvailable ? 'LLM → PAL → LLM' : 'Disconnected'}
+              {ollamaAvailable ? '' : 'Disconnected'}
             </p>
           </div>
         </div>
@@ -415,7 +412,7 @@ Please start Ollama: \`ollama serve\``,
                 : 'bg-gray-100 text-gray-600 border border-gray-300'
             }`}
           >
-            {showPipeline ? '📊 Pipeline ON' : 'Pipeline OFF'}
+            {showPipeline ? 'ON' : 'OFF'}
           </button>
           
           <button
